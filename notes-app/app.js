@@ -1,8 +1,8 @@
-require('./utils');
+const add = require('./utils');
 
-const name = 'Mert';
+const sum = add(4, -2)
 
-console.log(name);
+console.log(sum);
 
 
 
