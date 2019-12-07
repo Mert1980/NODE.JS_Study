@@ -1,10 +1,9 @@
-//Challenge: Define and use a function in a new file
+const validator = require('validator');
+const getNotes = require('./notes');
 
-const notes = require('./notes');
+const msg = getNotes();
 
-const msg = notes();
-
-console.log(msg);
+console.log(validator.isEmail('mertdemirok80@gmail.com'));
 
 
 
