@@ -1,8 +1,15 @@
-const add = require('./utils');
+//Challenge: Define and use a function in a new file
 
-const sum = add(4, -2)
+const notes = require('./notes');
 
-console.log(sum);
+const msg = notes();
+
+console.log(msg);
+
+
+
+
+
 
 
 
