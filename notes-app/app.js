@@ -1,4 +1,5 @@
 const chalk = require("chalk");
+cosnt yargs = require("yargs");
 const getNotes = require("./notes");
 
 const command = process.argv[2];
