@@ -1,13 +1,10 @@
 const chalk = require("chalk");
-cosnt yargs = require("yargs");
+const yargs = require("yargs");
 const getNotes = require("./notes");
-
-const command = process.argv[2];
 
 console.log(process.argv);
 
-if (command === "add") {
-  console.log("Adding note!");
-} else if (command === 'remove') {
-    console.log("Removing note!");
-}
+console.log(yargs.argv);
+// TYPE IN THE CONSOLE ==> node app.js add --title="Shopping list"
+
+ 
