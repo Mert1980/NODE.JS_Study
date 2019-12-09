@@ -2,9 +2,10 @@ const chalk = require("chalk");
 const yargs = require("yargs");
 const getNotes = require("./notes");
 
-console.log(process.argv);
+// Customize yargs version
+yargs.version('1.1.0');
 
 console.log(yargs.argv);
-// TYPE IN THE CONSOLE ==> node app.js add --title="Shopping list"
+
 
  
