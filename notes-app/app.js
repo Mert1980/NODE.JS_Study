@@ -25,7 +25,7 @@ yargs.command({
     console.log(`My Title: ${argv.title}`);
     console.log(`Body: ${argv.body}`);
   }
-});
+})
 
 // Create remove command
 yargs.command({
