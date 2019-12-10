@@ -9,15 +9,21 @@ yargs.version("1.1.0");
 yargs.command({
   command: "add",
   describe: "Add a new note",
-  builder: {
+  builder: { 
       title: {
           describe: 'Note title',
+          demandOption: true, // in default it is 'false'
+          type: 'string' // in default the type is 'boolean' 
+      },
+      body: {
+          describe: 'Note body',
           demandOption: true,
           type: 'string'
       }
   },
   handler: function(argv) {
     console.log(`My Title: ${argv.title}`);
+    console.log(`Body: ${argv.body}`);
   }
 });
 
@@ -50,4 +56,4 @@ yargs.command({
 
 // add, remove, read, list
 
-yargs.parse();
+yargs.parse(); // in replace of 'console.log(yargs.argv)'
