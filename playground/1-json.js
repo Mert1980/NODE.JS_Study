@@ -4,4 +4,8 @@ const book = {
 }
 
 const bookJson = JSON.stringify(book);
-console.log(bookJson);
+// console.log(bookJson);
+
+const parsedData = JSON.parse(bookJson);
+
+console.log(parsedData.author);
