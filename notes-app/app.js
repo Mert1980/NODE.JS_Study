@@ -9,49 +9,56 @@ yargs.version("1.1.0");
 yargs.command({
   command: "add",
   describe: "Add a new note",
-  builder: { 
-      title: {
-          describe: 'Note title',
-          demandOption: true, // in default it is 'false'
-          type: 'string' // in default the type is 'boolean' 
-      },
-      body: {
-          describe: 'Note body',
-          demandOption: true,
-          type: 'string'
-      }
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true, // in default it is 'false'
+      type: "string" // in default the type is 'boolean'
+    },
+    body: {
+      describe: "Note body",
+      demandOption: true,
+      type: "string"
+    }
   },
   handler: function(argv) {
     notes.addNote(argv.title, argv.body);
   }
-})
+});
 
 // Create remove command
 yargs.command({
   command: "remove",
   describe: "Removing a note",
-  handler: function() {
-    console.log("Removing a note");
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler: function(argv) {
+    notes.removeNote(argv.title);
   }
 });
 
 // Create a list command
 yargs.command({
-    command: "list",
-    describe: "List the notes",
-    handler: function() {
-      console.log("Listing out all note");
-    }
-  });
+  command: "list",
+  describe: "List the notes",
+  handler: function() {
+    console.log("Listing out all note");
+  }
+});
 
-  // Create a read command
+// Create a read command
 yargs.command({
-    command: "read",
-    describe: "Read a note",
-    handler: function() {
-      console.log("Reading a note");
-    }
-  });
+  command: "read",
+  describe: "Read a note",
+  handler: function() {
+    console.log("Reading a note");
+  }
+});
 
 // add, remove, read, list
 
