@@ -9,8 +9,13 @@ const addNote = function(title, body) {
   notes.push({
     title: title,
     body: body
-  })
-  console.log(notes)
+  });
+  saveNotes(notes);
+};
+
+const saveNotes = function(notes) {
+  const dataJSON = JSON.stringify(notes);
+  fs.writeFileSync("notes.json", dataJSON);
 };
 
 const loadNotes = function() {
