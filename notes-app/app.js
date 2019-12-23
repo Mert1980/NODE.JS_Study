@@ -47,8 +47,13 @@ yargs.command({
 yargs.command({
   command: "list",
   describe: "List the notes",
+  builder:{
+    title: {
+      describe: "notes list"
+      }
+  },
   handler() {
-    console.log("Listing out all note")
+    notes.listNotes();
   } 
 });
 

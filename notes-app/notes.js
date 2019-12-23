@@ -1,7 +1,9 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-const getNotes = () => {return "Your notes..."};
+const getNotes = () => {
+  return "Your notes...";
+};
 
 const addNote = (title, body) => {
   const notes = loadNotes();
@@ -22,7 +24,7 @@ const addNote = (title, body) => {
 
 const removeNote = title => {
   const notes = loadNotes();
-// keep the notes if it is true (that does not match)
+  // keep the notes if it is true (that does not match)
   const notesToKeep = notes.filter(note => note.title !== title);
   const log = console.log;
   if (notes.length > notesToKeep.length) {
@@ -47,8 +49,15 @@ const loadNotes = () => {
   }
 };
 
+const listNotes = () => {
+  const notes = loadNotes();
+  console.log(chalk.inverse("Your notes: "));
+  notes.forEach(note => console.log(note.title));
+};
+
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  listNotes: listNotes
 };
