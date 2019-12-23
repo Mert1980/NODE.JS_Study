@@ -1,16 +1,17 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-const getNotes = () => {
-  return "Your notes...";
-};
-
 const addNote = (title, body) => {
   const notes = loadNotes();
 
-  const dublicateNotes = notes.filter(note => note.title === title);
+  // const dublicateNotes = notes.filter(note => note.title === title);
+  // IOT prevent the code running all through the lists, find method returns the first match,
+  // if not, it returns undefined
 
-  if (dublicateNotes.length === 0) {
+  const dublicateNote = notes.find(note => note.title === title);
+
+  if (!dublicateNote) {
+    // alternatively ==> if(dublicateNote === undefined)
     notes.push({
       title: title,
       body: body
@@ -34,6 +35,24 @@ const removeNote = title => {
     log(chalk.red.inverse("No note found!"));
   }
 };
+
+const listNotes = () => {
+  const notes = loadNotes();
+  console.log(chalk.inverse("Your notes: "));
+  notes.forEach(note => console.log(note.title));
+};
+
+const readNote = title => {
+  const notes = loadNotes();
+  const note = notes.find(item => item.title === title);
+  if (note) {
+    console.log(chalk.blueBright.inverse(note.title));
+    console.log(note.body);
+  } else {
+    console.log(chalk.red.inverse("Note found found!"));
+  }
+};
+
 const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataJSON);
@@ -49,15 +68,9 @@ const loadNotes = () => {
   }
 };
 
-const listNotes = () => {
-  const notes = loadNotes();
-  console.log(chalk.inverse("Your notes: "));
-  notes.forEach(note => console.log(note.title));
-};
-
 module.exports = {
-  getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
-  listNotes: listNotes
+  listNotes: listNotes,
+  readNote: readNote
 };
